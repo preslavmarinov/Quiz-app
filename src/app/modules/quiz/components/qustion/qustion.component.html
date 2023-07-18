@@ -1,0 +1,26 @@
+
+<form *ngIf="type === 'random' || type===''; else defined">
+    <h1>{{questionNumber+1}}. {{question.question | base64Decode}}</h1>
+    <hr>
+    <mat-radio-group (change)="onChangeAnswer($event)">
+        <mat-radio-button *ngFor="let opt of randomOptions" [value]="opt" color="primary">{{opt | base64Decode}}</mat-radio-button>
+    </mat-radio-group>
+
+    <div class="next-btn">
+        <button mat-raised-button color="primary" (click)="nextQuestion()" [disabled]="chosenAnswer ? false : true">Next</button>
+    </div>
+</form>
+
+<ng-template #defined>
+    <form>
+        <h1>{{question.id}}. {{question.question}}</h1>
+        <hr>
+        <mat-radio-group (change)="onChangeAnswer($event)">
+            <mat-radio-button *ngFor="let opt of question.options" [value]="opt" color="primary">{{opt}}</mat-radio-button>
+        </mat-radio-group>
+
+        <div class="next-btn">
+            <button mat-raised-button color="primary" (click)="nextQuestion()" [disabled]="chosenAnswer ? false : true">Next</button>
+        </div>
+    </form>
+</ng-template>

@@ -1,0 +1,18 @@
+
+<div class="wrapper mat-app-background">
+
+    <app-header></app-header>
+    
+    <div class="question-form">
+        <form>
+            <h1>Choose what type of questions your quiz should be!</h1>
+            <hr>
+
+            <div class="btn-group">
+                <a><button (click)="chooseRandom()" mat-raised-button color="primary">Random Questions</button></a>
+
+                <a><button (click)="chooseDefined()" mat-raised-button color="primary">Defined Qustions</button></a>
+            </div>
+        </form>
+    </div>
+</div>

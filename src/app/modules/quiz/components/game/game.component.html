@@ -1,0 +1,39 @@
+
+<div class="wrapper mat-app-background">
+
+    <app-header></app-header>
+    
+    <div class="question-form">
+        <app-qustion *ngIf="questions && curr<questions.length"
+            [type]="type" 
+            [question]="questions[curr]" 
+            [questionNumber]="curr" 
+            (next)="getNextQuestion($event)">
+        </app-qustion>
+
+        <div *ngIf="questions === undefined">
+            <mat-spinner></mat-spinner>
+        </div>
+
+        <div *ngIf="questions!==undefined && curr===questions.length" class="game-end">
+            <h1>
+                <mat-icon color="primary">emoji_events</mat-icon>
+                {{this.answers.getCorrect()>=((80/100)*this.questions.length) ? 'Congratulations!' : this.answers.getCorrect()>=((40/100)*this.questions.length) ? 'Good job!' : 'Better luck next time!'}}
+                <mat-icon color="primary">emoji_events</mat-icon>
+            </h1>
+            <hr>
+            <h3>You got 
+                <span appChangeColor="#E91E63">{{answers.getCorrect()}}</span>
+                /
+                {{answers.getTotal()}}
+                 correct answers!
+            </h3>
+            <div>
+                <a routerLink="/quiz"><button mat-raised-button color="primary">Choose question types</button></a>
+                <span>or</span>
+                <button mat-raised-button color="primary" (click)="tryAgain()">Try again</button>
+            </div>
+        </div>
+    </div>
+</div>
+

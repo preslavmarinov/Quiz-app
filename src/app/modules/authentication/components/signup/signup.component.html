@@ -1,0 +1,59 @@
+<div class="wrapper mat-app-background">
+    <div class="form-content">
+        <form [formGroup]="form">
+            <h1>Signup</h1>
+            <hr>
+
+            <div class="fields">
+
+                <mat-form-field>
+                    <mat-label>First Name</mat-label>
+                    <input matInput type="text" formControlName="fname">
+                    <mat-icon matPrefix>person</mat-icon>
+                    <mat-error *ngIf="fname.invalid && fname.touched">First Name field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Last Name</mat-label>
+                    <input matInput type="text" formControlName="lname">
+                    <mat-icon matPrefix>person</mat-icon>
+                    <mat-error *ngIf="lname.invalid && lname.touched">Last Name field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput type="text" formControlName="email">
+                    <mat-icon matPrefix>email</mat-icon>
+                    <mat-error *ngIf="email.touched && email.invalid">{{emailErrors()}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput appBlockCopyPaste [type]="hide ? 'password' : 'text'" formControlName="password">
+                    <button mat-icon-button matSuffix (click)="togglePass()">
+                        <mat-icon>{{hide ? 'visibility_off': 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-icon matPrefix>lock</mat-icon>
+                    <mat-error *ngIf="password.touched && password.invalid">{{passwordErrors()}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Confirm Password</mat-label>
+                    <input matInput appBlockCopyPaste [type]="hideConfirm ? 'password' : 'text'" formControlName="passwordConfirm">
+                    <button mat-icon-button matSuffix (click)="togglePassConfirm()">
+                        <mat-icon>{{hideConfirm ? 'visibility_off': 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-icon matPrefix>lock</mat-icon>
+                    <mat-error *ngIf="passwordConfirm.invalid && passwordConfirm.touched">Confirm your password</mat-error>
+                    <mat-error *ngIf="form.errors!==null && !form.errors['passwordMatch']">Confirmed password does not match password</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="submit">
+                <button mat-raised-button color="primary" class="signup-button" (click)="onSubmit()">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--To prevent cut copy pase in the input besides a directive   (paste)="(false)" (copy)="(false)" -->

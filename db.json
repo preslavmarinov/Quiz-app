@@ -1,0 +1,122 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which of the following does TypeScript use to specify types?",
+      "options": [
+        ":",
+        ";",
+        "!",
+        "&"
+      ],
+      "correct": ":",
+      "explanation": "TS uses a colon (:) to separate the property name from the property type"
+    },
+    {
+      "id": 2,
+      "question": "Which of the following is NOT a type used in TypeScript?",
+      "options": [
+        "number",
+        "string",
+        "boolean",
+        "enum"
+      ],
+      "correct": "enum",
+      "explanation": "Enum is not used as a type in TypeScript"
+    },
+    {
+      "id": 3,
+      "question": "Which is NOT an access modifier?",
+      "options": [
+        "public",
+        "protected",
+        "async",
+        "private"
+      ],
+      "correct": "async",
+      "explanation": "Async is not used as an access modifier type in typeScript but for asynchronous work"
+    },
+    {
+      "id": 4,
+      "question": "What can you lazy load in Angular",
+      "options": [
+        "components",
+        "pipes",
+        "directives",
+        "modules"
+      ],
+      "correct": "modules",
+      "explanation": "In Angular you can lazy load modules"
+    },
+    {
+      "id": 5,
+      "question": "What is the preferred way to use services in Angular",
+      "options": [
+        "make an instance in your component",
+        "dependancy injection through constructor",
+        "proba",
+        "proba"
+      ],
+      "correct": "dependancy injection through constructor",
+      "explanation": "A service should always be injected through the constructor of a component"
+    },
+    {
+      "id": 6,
+      "question": "Which is an array method to generate a new array based on a condition?",
+      "options": [
+        "filter",
+        "map",
+        "reduce",
+        "find"
+      ],
+      "correct":"filter",
+      "explanation": "Filter is a method used to conditionally create a new array"
+    },
+    {
+      "id": 7,
+      "question": "There is no question here just try your luck",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "correct": "D",
+      "explanation": ""
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "first_name": "User",
+      "last_name": "Userov",
+      "email": "user@gmail.com",
+      "password": "1234#aaaA",
+      "role": "user"
+    },
+    {
+      "id": 2,
+      "first_name": "Example",
+      "last_name": "Exampelov",
+      "email": "example@gmail.com",
+      "password": "ex123&&EE",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "first_name": "Admin",
+      "last_name": "Adminov",
+      "email": "admin@gmail.com",
+      "password": "admiN99#",
+      "role": "admin"
+    },
+    {
+      "first_name": "Preslav",
+      "last_name": "Marinov",
+      "email": "pm@gmail.com",
+      "password": "Pm#11111",
+      "role": "user",
+      "id": 4
+    }
+  ]
+}
