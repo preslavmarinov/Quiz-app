@@ -1,0 +1,27 @@
+
+<nav>
+    <div class="close-side">
+        <mat-icon (click)="close()">close</mat-icon>
+    </div>
+    <a routerLink="/dashboard/users">
+       <div class="nav-link" (click)="close()">
+            <mat-icon>people</mat-icon>Users
+        </div>
+    </a>
+
+    <a routerLink="/dashboard/questions">
+        <div class="nav-link" (click)="close()">
+            <mat-icon>question_mark</mat-icon>Questions
+        </div>
+    </a>
+
+    <a routerLink="/dashboard/about">
+        <div class="nav-link" (click)="close()">
+            <mat-icon>info</mat-icon>About
+        </div>
+    </a>
+    
+    <div class="nav-link" (click)="logout()">
+        <mat-icon>logout</mat-icon>Logout
+    </div>
+</nav>

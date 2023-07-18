@@ -16,14 +16,14 @@ export class HeaderComponent {
   constructor(private authService: AuthenticationService,private notifier:NotifierService,private router:Router) {}
 
   ngOnInit(): void {
-    this.authService.getUserById(localStorage.getItem('id')!).subscribe({
+    this.authService.getUserById(sessionStorage.getItem('id')!).subscribe({
       next: (res) => this.loggedUser = res,
       error: () => this.notifier.notify('error', 'Sorry cannot find your name')
     })
   }
 
   logout() {
-    localStorage.clear();
+    sessionStorage.clear();
     this.router.navigateByUrl('/authentication');
   }
 }

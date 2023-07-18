@@ -1,0 +1,68 @@
+
+
+@keyframes sideBar {
+    from {
+        right: -20%;
+    }
+    to {
+        right: 0;
+    }
+}
+
+nav {
+    position: absolute;
+    top:0;
+    width: 20%;
+    height: 100%;
+    background-color: rgb(150, 150, 150);
+    border: 1px solid white;
+    animation-name: sideBar;
+    animation-duration: 0.7s;
+    animation-fill-mode: forwards;
+
+    .close-side {
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: row-reverse;
+        mat-icon {
+            
+            height: 50px;
+            width: 50px;
+            font-size: 48px;
+        }
+        mat-icon:hover {
+            color: #E91E63;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color:white;
+    }
+
+    .nav-link {
+        font-size: 1.4rem;
+        padding: 20px 10px; 
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        background-image: linear-gradient(#E91E63, #E91E63);
+        background-size: 0 100%;
+        background-repeat: no-repeat;
+        transition: 0.5s;
+
+        mat-icon {
+            width: 30px;
+            height: 30px;
+            font-size: 28px;
+        }
+    }
+    .nav-link:hover {
+        background-size: 100% 100%;
+        color:#333;
+        font-size: 1.5rem;
+    }
+}
+
+

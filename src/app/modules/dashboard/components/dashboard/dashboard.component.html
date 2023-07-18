@@ -1,0 +1,8 @@
+
+<div class="wrapper mat-app-background">
+    <app-header (sidebar)="toggleSideBar($event)"></app-header>
+
+    <app-side-bar *ngIf="isSideBarOpen" (closeSideBar)="toggleSideBar($event)"></app-side-bar>
+
+    <router-outlet></router-outlet>
+</div>

@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if(localStorage.getItem('id') !== null && localStorage.getItem('role') === 'user') this.router.navigateByUrl('/quiz');
-    else if(localStorage.getItem('id') !== null && localStorage.getItem('role') === 'admin') console.log('admin');
+    else if(localStorage.getItem('id') !== null && localStorage.getItem('role') === 'admin') this.router.navigateByUrl('/dashboard');
 
     this.form = this.fb.group({
       email: ['', {
@@ -58,10 +58,10 @@ export class LoginComponent implements OnInit {
           this.user = res.find((x: User) => x.email === currEmail && x.password === currPassword);
   
           if(this.user) {
-            localStorage.setItem('id', this.user.id!.toString());
-            localStorage.setItem('role', this.user.role);
+            sessionStorage.setItem('id', this.user.id!.toString());
+            sessionStorage.setItem('role', this.user.role);
             if(this.user.role === 'user') this.router.navigateByUrl("/quiz");
-            else console.log('admin');
+            else this.router.navigateByUrl('/dashboard');
           }
           else this.notifier.notify('warning', 'Wrong credentials');
         },

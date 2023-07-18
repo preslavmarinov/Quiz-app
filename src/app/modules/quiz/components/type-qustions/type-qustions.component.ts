@@ -14,7 +14,7 @@ export class TypeQustionsComponent  {
   constructor(private questionService: QuestionService,private router:Router) {}
 
   logout() {
-    localStorage.clear();
+    sessionStorage.clear();
     this.router.navigateByUrl('/authentication');
   }
 
