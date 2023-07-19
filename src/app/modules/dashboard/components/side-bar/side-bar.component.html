@@ -15,12 +15,18 @@
         </div>
     </a>
 
+    <a routerLink="/quiz">
+      <div class="nav-link" (click)="close()">
+        <mat-icon>sports_esports</mat-icon>Test Game
+      </div>
+    </a>
+
     <a routerLink="/dashboard/about">
         <div class="nav-link" (click)="close()">
             <mat-icon>info</mat-icon>About
         </div>
     </a>
-    
+
     <div class="nav-link" (click)="logout()">
         <mat-icon>logout</mat-icon>Logout
     </div>

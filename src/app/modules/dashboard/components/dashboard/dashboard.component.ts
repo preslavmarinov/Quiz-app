@@ -7,9 +7,14 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
   isSideBarOpen:boolean = false;
+  createUserModalVisibility = false;
 
   toggleSideBar(value: boolean) {
     this.isSideBarOpen = value;
+  }
+
+  openCreateModal(value:boolean) {
+    this.createUserModalVisibility = value;
   }
 
 }

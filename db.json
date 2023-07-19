@@ -69,7 +69,7 @@
         "reduce",
         "find"
       ],
-      "correct":"filter",
+      "correct": "filter",
       "explanation": "Filter is a method used to conditionally create a new array"
     },
     {
@@ -117,6 +117,118 @@
       "password": "Pm#11111",
       "role": "user",
       "id": 4
+    },
+    {
+      "id": 5,
+      "first_name": "Example5",
+      "last_name": "Example5",
+      "email": "example5@gmail.com",
+      "password": "admiN99#",
+      "role": "user"
+    },
+    {
+      "id": 8,
+      "first_name": "Example8",
+      "last_name": "Example8",
+      "email": "example8@gmail.com",
+      "password": "admiN99#",
+      "role": "user"
+    },
+    {
+      "id": 9,
+      "first_name": "Example9",
+      "last_name": "Example9",
+      "email": "example9@gmail.com",
+      "password": "admiN99#",
+      "role": "user"
+    },
+    {
+      "id": 10,
+      "first_name": "Example10",
+      "last_name": "Example10",
+      "email": "example10@gmail.com",
+      "password": "admiN99#",
+      "role": "user"
+    },
+    {
+      "id": 11,
+      "first_name": "Example11",
+      "last_name": "Example11",
+      "email": "example11@gmail.com",
+      "password": "admiN99#",
+      "role": "user"
+    },
+    {
+      "id": 12,
+      "first_name": "Example12",
+      "last_name": "Example12",
+      "email": "example12@gmail.com",
+      "password": "admiN99#",
+      "role": "user"
+    },
+    {
+      "id": 13,
+      "first_name": "Example13",
+      "last_name": "Example13",
+      "email": "example13@gmail.com",
+      "password": "admiN99#",
+      "role": "user"
+    },
+    {
+      "id": 14,
+      "first_name": "Example14",
+      "last_name": "Example14",
+      "email": "example14@gmail.com",
+      "password": "admiN99#",
+      "role": "user"
+    },
+    {
+      "id": 15,
+      "first_name": "Example15",
+      "last_name": "Example15",
+      "email": "example15@gmail.com",
+      "password": "admiN99#",
+      "role": "user"
+    },
+    {
+      "id": 16,
+      "first_name": "Example16",
+      "last_name": "Example16",
+      "email": "example16@gmail.com",
+      "password": "admiN99#",
+      "role": "user"
+    },
+    {
+      "id": 17,
+      "first_name": "Example17",
+      "last_name": "Example17",
+      "email": "example17@gmail.com",
+      "password": "admiN99#",
+      "role": "user"
+    },
+    {
+      "id": 18,
+      "first_name": "Example18",
+      "last_name": "Example18",
+      "email": "example18@gmail.com",
+      "password": "admiN99#",
+      "role": "user"
+    },
+    {
+      "id": 19,
+      "first_name": "Example19",
+      "last_name": "Example19",
+      "email": "example19@gmail.com",
+      "password": "admiN99#",
+      "role": "user"
+    },
+    {
+      "id": 20,
+      "first_name": "Example20",
+      "last_name": "Example20",
+      "email": "example20@gmail.com",
+      "password": "admiN99#",
+      "role": "user"
     }
   ]
 }

@@ -9,7 +9,7 @@
                     <mat-label>Email</mat-label>
                     <input matInput type="text" formControlName="email">
                     <mat-icon matPrefix>email</mat-icon>
-                    <mat-error *ngIf="email.touched && email.invalid">{{emailErrors()}}</mat-error>
+                    <mat-error *ngIf="emailFormControl.touched && emailFormControl.invalid">{{emailErrors()}}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field>
@@ -19,7 +19,7 @@
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                     <mat-icon matPrefix>lock</mat-icon>
-                    <mat-error *ngIf="password.touched && password.invalid">{{passwordErrors()}}</mat-error>
+                    <mat-error *ngIf="passwordFormControl.touched && passwordFormControl.invalid">{{passwordErrors()}}</mat-error>
                 </mat-form-field>
             </div>
 
@@ -31,8 +31,8 @@
                 <span>or</span>
                 <a routerLink="/authentication/signup"><p>Sign-up</p></a>
             </div>
-            
-            
+
+
         </form>
     </div>
 </div>

@@ -9,7 +9,14 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
 import { AboutComponent } from './components/about/about.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MatIconModule } from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
 import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import { CreateUserModalComponent } from './components/create-user-modal/create-user-modal.component';
 
 
 @NgModule({
@@ -20,12 +27,19 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     UserInfoComponent,
     AboutComponent,
     HeaderComponent,
-    SideBarComponent
+    SideBarComponent,
+    CreateUserModalComponent
   ],
   imports: [
     SharedModule,
     DashboardRoutingModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ]
 })
 export class DashboardModule { }

@@ -12,26 +12,26 @@ import { passwordMismatch, passwordValidator } from '../../custom-validators';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  hide:boolean = true;
-  hideConfirm:boolean = true;
-  form:FormGroup; 
+  hide = true;
+  hideConfirm = true;
+  form:FormGroup;
 
 
   constructor(private authService:AuthenticationService,private router:Router,private notifier:NotifierService,private fb:FormBuilder) {}
 
-  get fname() {
+  get fnameFormControl() {
     return this.form.controls['fname'];
   }
-  get lname() {
+  get lnameFormControl() {
     return this.form.controls['lname'];
   }
-  get email() {
+  get emailFormControl() {
     return this.form.controls['email'];
   }
-  get password() {
+  get passwordFormControl() {
     return this.form.controls['password'];
   }
-  get passwordConfirm() {
+  get passwordConfirmFormControl() {
     return this.form.controls['passwordConfirm'];
   }
 
@@ -61,23 +61,22 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.form.valid) {
-      const newUser: User = {
-        first_name: this.fname.value,
-        last_name: this.lname.value,
-        email: this.email.value,
-        password: this.password.value,
-        role: 'user'
-      };
-
-      this.authService.createUser(newUser).subscribe({
-        next: () =>  this.router.navigateByUrl('/quiz'),
-        error: () => this.notifier.notify('error', "An error occured")
-      });
-    }
-    else {
+    if(this.form.invalid) {
       this.notifier.notify('warning', 'Invalid form fields');
     }
+
+    const newUser: User = {
+      first_name: this.fnameFormControl.value,
+      last_name: this.lnameFormControl.value,
+      email: this.emailFormControl.value,
+      password: this.passwordFormControl.value,
+      role: 'user'
+    };
+
+    this.authService.createUser(newUser).subscribe({
+      next: () =>  this.router.navigateByUrl('/quiz'),
+      error: () => this.notifier.notify('error', "An error occured")
+    });
   }
 
   togglePass() {
@@ -88,19 +87,15 @@ export class SignupComponent implements OnInit {
   }
 
   emailErrors() {
-    if(this.email.errors === null) return;
-    else {
-      if(this.email.errors['required']) return "Email field is required";
-      else return "Invalid email";
-    }
+    if(this.emailFormControl.errors!['required']) return "Email field is required";
+    if(this.emailFormControl.errors!['email']) return "Invalid email";
+    return null;
   }
 
   passwordErrors() {
-    if(this.password.errors === null) return;
-    else {
-      if(this.password.errors['required']) return "Password field is required";
-      else if(this.password.errors['minlength'] || this.password.errors['maxlength']) return "Password must be between 8 and 16 characters" 
-      else return "Password must contain a small, a capital, a numeric and a special character";
-    }
+    if(this.passwordFormControl.errors!['required']) return "Password field is required";
+    if(this.passwordFormControl.errors!['minlength'] || this.passwordFormControl.errors!['maxlength']) return "Password must be between 8 and 16 characters"
+    if(this.passwordFormControl.errors!['passStrength']) return "Password must contain a small, a capital, a numeric and a special character";
+    return null;
   }
 }

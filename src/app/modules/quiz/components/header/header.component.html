@@ -1,5 +1,10 @@
 
 <header>
     <h2>Hi {{loggedUser!== undefined ? loggedUser.first_name+' '+loggedUser.last_name : ''}}!</h2>
-    <button (click)="logout()" mat-icon-button color="primary"><mat-icon>logout</mat-icon></button>
+    <div>
+      <a *ngIf="loggedUser?.role === 'admin'" routerLink="/dashboard" title="Go to dashboard">
+        <button mat-icon-button color="primary"><mat-icon>dashboard</mat-icon></button>
+      </a>
+      <button title="Logout" (click)="logout()" mat-icon-button color="primary"><mat-icon>logout</mat-icon></button>
+    </div>
 </header>

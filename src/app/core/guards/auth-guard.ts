@@ -15,8 +15,7 @@ export const authGuardQuiz = () : CanActivateFn => {
         console.log(router.url);
 
         if(userId !== null) return true;
-        else {
-            return router.navigateByUrl('/authentication/login');
-        }
+
+        return router.navigateByUrl('/authentication/login');
     }
 }

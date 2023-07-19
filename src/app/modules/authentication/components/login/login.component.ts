@@ -13,7 +13,7 @@ import { NotifierService } from 'angular-notifier';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  hide:boolean = true;
+  hide = true;
   user:User | undefined;
   // form = this.fb.group({
   //   "email": ["", [Validators.required, Validators.email]],
@@ -23,18 +23,31 @@ export class LoginComponent implements OnInit {
 
   form : FormGroup
 
-  get email() {
+  get emailFormControl() {
     return this.form.controls['email'];
   }
-  get password() {
+  get passwordFormControl() {
     return this.form.controls['password'];
   }
 
-  constructor(private authService: AuthenticationService,private fb:FormBuilder,private router:Router,private notifier: NotifierService) {}
+  constructor(
+    private authService: AuthenticationService,
+    private fb:FormBuilder,
+    private router:Router,
+    private notifier: NotifierService
+  ) {}
 
   ngOnInit(): void {
-    if(localStorage.getItem('id') !== null && localStorage.getItem('role') === 'user') this.router.navigateByUrl('/quiz');
-    else if(localStorage.getItem('id') !== null && localStorage.getItem('role') === 'admin') this.router.navigateByUrl('/dashboard');
+    if(
+      localStorage.getItem('id') !== null &&
+      localStorage.getItem('role') === 'user') {
+        this.router.navigateByUrl('/quiz');
+    }
+    else if(
+      localStorage.getItem('id') !== null &&
+      localStorage.getItem('role') === 'admin') {
+        this.router.navigateByUrl('/dashboard');
+    }
 
     this.form = this.fb.group({
       email: ['', {
@@ -49,29 +62,29 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    let currEmail = this.email.value;
-    let currPassword = this.password.value;    
+    let currEmail = this.emailFormControl.value;
+    let currPassword = this.passwordFormControl.value;
 
-    if(this.form.valid) {
-      this.authService.getUsers().subscribe({
-        next: (res) => {
-          this.user = res.find((x: User) => x.email === currEmail && x.password === currPassword);
-  
-          if(this.user) {
-            sessionStorage.setItem('id', this.user.id!.toString());
-            sessionStorage.setItem('role', this.user.role);
-            if(this.user.role === 'user') this.router.navigateByUrl("/quiz");
-            else this.router.navigateByUrl('/dashboard');
-          }
-          else this.notifier.notify('warning', 'Wrong credentials');
-        },
-
-        error: () => {
-          this.notifier.notify('error', 'An error occured');
-        }
-      })
+    if(this.form.invalid) {
+      this.notifier.notify('warning', 'Invalid form fields');
     }
-    else this.notifier.notify('warning', 'Invalid form fields');
+
+    this.authService.checkUserLogin(currEmail,currPassword).subscribe({
+      next: (res:User | undefined) => {
+        this.user = res;
+
+        if(this.user) {
+          sessionStorage.setItem('id', this.user.id!.toString());
+          sessionStorage.setItem('role', this.user.role);
+          if(this.user.role === 'user') this.router.navigateByUrl("/quiz");
+          else this.router.navigateByUrl('/dashboard');
+        }
+        else this.notifier.notify('warning', 'Wrong credentials');
+      },
+      error: () => {
+        this.notifier.notify('error', 'An error occured');
+      }
+    })
   }
 
   togglePasswordVisibility() {
@@ -79,23 +92,19 @@ export class LoginComponent implements OnInit {
   }
 
   emailErrors() {
-    if(this.email.errors === null) return;
-    else {
-      if(this.email.errors['required']) return "Email field is required";
-      else return "Invalid email";
-    }
+    if(this.emailFormControl.errors!['required']) return "Email field is required";
+    if(this.emailFormControl.errors!['email']) return "Invalid email";
+    return null;
   }
 
   passwordErrors() {
-    if(this.password.errors === null) return;
-    else {
-      if(this.password.errors['required']) return "Password field is required";
-      else if(this.password.errors['minlength'] || this.password.errors['maxlength']) return "Password must be between 8 and 16 characters" 
-      else return "Password must contain a small, a capital, a numeric and a special character";
-    }
+      if(this.passwordFormControl.errors!['required']) return "Password field is required";
+      if(this.passwordFormControl.errors!['minlength'] || this.passwordFormControl.errors!['maxlength']) return "Password must be between 8 and 16 characters"
+      if(this.passwordFormControl.errors!['passStrength']) return "Password must contain a small, a capital, a numeric and a special character";
+      return null;
   }
 
-  
+
 }
 
 //FormBuilder is used to shorten what is originally this:
@@ -103,6 +112,3 @@ export class LoginComponent implements OnInit {
 //   "email": new FormControl("", [Validators.required, Validators.email]),
 //   "password": new FormControl("", [Validators.required, Validators.maxLength(16)])
 // })
-
-
-//Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).+$')

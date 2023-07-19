@@ -1,0 +1,46 @@
+
+.new-user-container {
+  width: 80%;
+  margin: 1rem auto;
+
+  button:hover {
+    color:black;
+    background-color: #E91E63;
+  }
+}
+
+.filter-container {
+  width: 80%;
+  margin: 2rem auto;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.mat-elevation-z8 {
+  width: 80%;
+  margin: 2rem auto;
+
+  .mat-mdc-header-row {
+    background-color: #E91E63;
+  }
+
+  .mat-mdc-header-cell {
+    color: black;
+  }
+
+  .mat-sort-header-arrow {
+    color:black;
+  }
+
+  .action-buttons:hover {
+    color: #E91E63;
+  }
+
+  .no-data-row {
+    font-size: 1.3rem;
+    text-align: center;
+    padding: 2rem;
+  }
+}

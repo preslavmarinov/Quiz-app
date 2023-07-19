@@ -10,21 +10,21 @@
                     <mat-label>First Name</mat-label>
                     <input matInput type="text" formControlName="fname">
                     <mat-icon matPrefix>person</mat-icon>
-                    <mat-error *ngIf="fname.invalid && fname.touched">First Name field is required</mat-error>
+                    <mat-error *ngIf="fnameFormControl.invalid && fnameFormControl.touched">First Name field is required</mat-error>
                 </mat-form-field>
 
                 <mat-form-field>
                     <mat-label>Last Name</mat-label>
                     <input matInput type="text" formControlName="lname">
                     <mat-icon matPrefix>person</mat-icon>
-                    <mat-error *ngIf="lname.invalid && lname.touched">Last Name field is required</mat-error>
+                    <mat-error *ngIf="lnameFormControl.invalid && lnameFormControl.touched">Last Name field is required</mat-error>
                 </mat-form-field>
 
                 <mat-form-field>
                     <mat-label>Email</mat-label>
                     <input matInput type="text" formControlName="email">
                     <mat-icon matPrefix>email</mat-icon>
-                    <mat-error *ngIf="email.touched && email.invalid">{{emailErrors()}}</mat-error>
+                    <mat-error *ngIf="emailFormControl.touched && emailFormControl.invalid">{{emailErrors()}}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field>
@@ -34,7 +34,7 @@
                         <mat-icon>{{hide ? 'visibility_off': 'visibility'}}</mat-icon>
                     </button>
                     <mat-icon matPrefix>lock</mat-icon>
-                    <mat-error *ngIf="password.touched && password.invalid">{{passwordErrors()}}</mat-error>
+                    <mat-error *ngIf="passwordFormControl.touched && passwordFormControl.invalid">{{passwordErrors()}}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field>
@@ -44,7 +44,7 @@
                         <mat-icon>{{hideConfirm ? 'visibility_off': 'visibility'}}</mat-icon>
                     </button>
                     <mat-icon matPrefix>lock</mat-icon>
-                    <mat-error *ngIf="passwordConfirm.invalid && passwordConfirm.touched">Confirm your password</mat-error>
+                    <mat-error *ngIf="passwordConfirmFormControl.invalid && passwordConfirmFormControl.touched">Confirm your password</mat-error>
                     <mat-error *ngIf="form.errors!==null && !form.errors['passwordMatch']">Confirmed password does not match password</mat-error>
                 </mat-form-field>
             </div>
