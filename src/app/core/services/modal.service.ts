@@ -19,12 +19,10 @@ export class ModalService {
   }
 
   openModal(id:string) {
-    console.log(id);
     this.setModalState(id, true);
   }
 
   closeModal(id:string) {
-    console.log(id);
     this.setModalState(id, false);
   }
 
@@ -37,7 +35,6 @@ export class ModalService {
   }
 
   private setModalState(id:string, state:boolean) {
-    console.log(state);
     let modal = this.modalStates.find(el => el.id === id);
     if(modal) {
       modal.state.next(state);
@@ -45,7 +42,6 @@ export class ModalService {
   }
 
   setCurrElementId(value:number) :void {
-    console.log('service modal ', value)
      this.currElementId.next(value);
   }
 }

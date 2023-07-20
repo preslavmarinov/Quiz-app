@@ -33,4 +33,8 @@ export class AuthenticationService {
   deleteUser(id:number): Observable<{}> {
     return this.http.delete<{}>(`${this.baseUrl}/${id}`);
   }
+
+  editUser(id:number,user:User) :Observable<User> {
+    return  this.http.put<User>(`${this.baseUrl}/${id}`, user);
+  }
 }

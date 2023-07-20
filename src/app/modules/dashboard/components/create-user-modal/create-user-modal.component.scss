@@ -12,12 +12,13 @@
 }
 
 .modal-content {
-  background-color: #fefefe;
+  position: relative;
+  background-color: rgb(150,150,150);
   margin: 0 auto;
   margin-top: -50%;
   padding: 20px;
   border: 1px solid #888;
-  width: 30%;
+  width: 40%;
   border-radius: 10px;
   animation-name: modalPop;
   animation-duration: 1.2s;
@@ -25,10 +26,35 @@
 
   h1 {
     text-align: center;
-    color:black;
+    color:white;
+    font-size: 1.8rem;
   }
-  button {
-    color:black;
+  .close-modal {
+    color:white;
+    position: absolute;
+    top:5px;
+    right: 5px;
+  }
+
+  .modal-form {
+    width: 90%;
+    margin: 0 auto;
+
+    .mat-form-field {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .create-btn-container {
+      width: 90%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+
+      button {
+        font-size: 1.3rem;
+      }
+    }
   }
 }
 
@@ -37,7 +63,7 @@
     margin-top: -50%;
   }
   to {
-    margin-top: 10%;
+    margin-top: 5%;
   }
 }
 

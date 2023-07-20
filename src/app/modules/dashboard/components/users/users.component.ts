@@ -7,6 +7,7 @@ import {MatSort} from "@angular/material/sort";
 import {filter} from "rxjs";
 import {NotifierService} from "angular-notifier";
 import {ModalService} from "../../../../core/services/modal.service";
+import {ApiResponseStatusService} from "../../services/api-response-status.service";
 
 @Component({
   selector: 'app-users',
@@ -22,14 +23,19 @@ export class UsersComponent implements  OnInit{
   constructor(
     private authService: AuthenticationService,
     private notifier:NotifierService,
-    private modalService: ModalService) {
+    private modalService: ModalService,
+    private apiStatusService: ApiResponseStatusService) {
   }
   ngOnInit() {
+    this.apiStatusService.statusResp$.subscribe((res:boolean) => {
+      if(res) {
+        this.getUsers();
+      }
+    })
     this.getUsers();
   }
 
   openModal(id:string, currElId:number = -1) {
-    console.log('clicked', currElId);
     this.modalService.setCurrElementId(currElId);
     this.modalService.openModal(id);
   }

@@ -229,6 +229,14 @@
       "email": "example20@gmail.com",
       "password": "admiN99#",
       "role": "user"
+    },
+    {
+      "first_name": "Proba",
+      "last_name": "Probev",
+      "email": "proba@gmail.com",
+      "password": "Proba11#",
+      "role": "user",
+      "id": 21
     }
   ]
 }

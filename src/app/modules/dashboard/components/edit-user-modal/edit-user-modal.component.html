@@ -1,12 +1,56 @@
+
 <div class="modal" (click)="close()">
   <div class="modal-content" (click)="$event.stopPropagation()">
-    <h1>Edit user {{id}}</h1>
-    <button mat-icon-button (click)="close()"><mat-icon>close</mat-icon></button>
+    <h1>Edit user</h1>
+    <button class="close-modal" mat-icon-button (click)="close()"><mat-icon>close</mat-icon></button>
     <hr>
 
     <div class="modal-form">
-      <form>
+      <form [formGroup]="form">
+        <mat-form-field class="mat-form-field">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="fname" required>
+          <mat-icon matPrefix>person</mat-icon>
+          <mat-error *ngIf="fnameFormControl.invalid && fnameFormControl.touched">First Name field is required</mat-error>
+        </mat-form-field>
 
+        <mat-form-field class="mat-form-field">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lname" required>
+          <mat-icon matPrefix>person</mat-icon>
+          <mat-error *ngIf="lnameFormControl.invalid && lnameFormControl.touched">Last Name field is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="mat-form-field">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" required>
+          <mat-icon matPrefix>email</mat-icon>
+          <mat-error *ngIf="emailFormControl.invalid && emailFormControl.touched">{{emailErrors()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="mat-form-field">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+          <button mat-icon-button matSuffix (click)="togglePass()">
+            <mat-icon>{{hidePassword ? 'visibility_off': 'visibility'}}</mat-icon>
+          </button>
+          <mat-icon matPrefix>lock</mat-icon>
+          <mat-error *ngIf="passwordFormControl.touched && passwordFormControl.invalid">{{passwordErrors()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="mat-form-field">
+          <mat-label>Role</mat-label>
+          <mat-select formControlName="role" required>
+            <mat-option>--</mat-option>
+            <mat-option [value]="'user'">User</mat-option>
+            <mat-option [value]="'admin'">Admin</mat-option>
+          </mat-select>
+          <mat-error *ngIf="roleFormControl.invalid && roleFormControl.touched">Role field is required</mat-error>
+        </mat-form-field>
+
+        <div class="create-btn-container">
+          <button mat-raised-button color="primary" (click)="editUser()">Edit</button>
+        </div>
       </form>
     </div>
   </div>
