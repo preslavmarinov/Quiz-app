@@ -6,6 +6,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {filter} from "rxjs";
 import {NotifierService} from "angular-notifier";
+import {ModalService} from "../../../../core/services/modal.service";
 
 @Component({
   selector: 'app-users',
@@ -17,19 +18,22 @@ export class UsersComponent implements  OnInit{
   displayedColumns = ['id', 'first_name', 'last_name', 'email', 'password', 'role', 'actions'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @Output() createModal = new EventEmitter<boolean>();
 
   constructor(
     private authService: AuthenticationService,
-    private notifier:NotifierService) {
+    private notifier:NotifierService,
+    private modalService: ModalService) {
   }
   ngOnInit() {
     this.getUsers();
   }
 
-  openCreateModal() {
-    this.createModal.emit(true);
+  openModal(id:string, currElId:number = -1) {
+    console.log('clicked', currElId);
+    this.modalService.setCurrElementId(currElId);
+    this.modalService.openModal(id);
   }
+
 
   getUsers() {
     this.authService.getUsers().subscribe({

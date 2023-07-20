@@ -1,6 +1,6 @@
 
 <div class="new-user-container">
-  <button mat-raised-button color="primary" (click)="openCreateModal()">New User</button>
+  <button mat-raised-button color="primary" (click)="openModal('create-user-modal')">New User</button>
 </div>
 
 <div class="filter-container">
@@ -46,7 +46,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let row">
-        <button class="action-buttons" mat-icon-button><mat-icon>edit</mat-icon></button>
+        <button class="action-buttons" mat-icon-button (click)="openModal('edit-user-modal', row.id)"><mat-icon>edit</mat-icon></button>
         <button class="action-buttons" mat-icon-button (click)="deleteUser(row.id)"><mat-icon>delete</mat-icon></button>
       </td>
     </ng-container>

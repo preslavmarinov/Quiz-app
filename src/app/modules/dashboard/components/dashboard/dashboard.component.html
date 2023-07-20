@@ -4,7 +4,8 @@
 
     <app-side-bar *ngIf="isSideBarOpen" (closeSideBar)="toggleSideBar($event)"></app-side-bar>
 
-    <app-create-user-modal *ngIf="createUserModalVisibility"></app-create-user-modal>
+    <app-create-user-modal *ngIf="modalService.getModalState('create-user-modal') | async"></app-create-user-modal>
+    <app-edit-user-modal *ngIf="modalService.getModalState('edit-user-modal') | async"></app-edit-user-modal>
 
-    <router-outlet (createModal)="openCreateModal($event)"></router-outlet>
+    <router-outlet></router-outlet>
 </div>

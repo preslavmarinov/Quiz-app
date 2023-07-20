@@ -17,6 +17,7 @@ import { MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import { CreateUserModalComponent } from './components/create-user-modal/create-user-modal.component';
+import { EditUserModalComponent } from './components/edit-user-modal/edit-user-modal.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { CreateUserModalComponent } from './components/create-user-modal/create-
     AboutComponent,
     HeaderComponent,
     SideBarComponent,
-    CreateUserModalComponent
+    CreateUserModalComponent,
+    EditUserModalComponent
   ],
   imports: [
     SharedModule,

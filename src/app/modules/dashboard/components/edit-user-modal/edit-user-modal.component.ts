@@ -1,17 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../../../core/services/authentication.service";
-import {passwordValidator} from "../../../authentication/custom-validators";
 import {ModalService} from "../../../../core/services/modal.service";
+import {passwordValidator} from "../../../authentication/custom-validators";
 
 @Component({
-  selector: 'app-create-user-modal',
-  templateUrl: './create-user-modal.component.html',
-  styleUrls: ['./create-user-modal.component.scss']
+  selector: 'app-edit-user-modal',
+  templateUrl: './edit-user-modal.component.html',
+  styleUrls: ['./edit-user-modal.component.scss']
 })
-export class CreateUserModalComponent implements OnInit{
+export class EditUserModalComponent implements OnInit{
   hidePassword = true;
   form:FormGroup;
+  id:number;
 
   constructor(
     private authService:AuthenticationService,
@@ -21,7 +22,7 @@ export class CreateUserModalComponent implements OnInit{
   }
 
   close() {
-    this.modalService.closeModal('create-user-modal');
+    this.modalService.closeModal('edit-user-modal');
   }
 
   get fnameFormControl() {
@@ -41,6 +42,10 @@ export class CreateUserModalComponent implements OnInit{
   }
 
   ngOnInit() {
+    this.modalService.currElementId$.subscribe((res:number) => {
+      this.id = res;
+    })
+
     this.form = this.fb.group({
       fname: ['', {
         validators: [Validators.required],
