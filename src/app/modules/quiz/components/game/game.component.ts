@@ -25,7 +25,6 @@ export class GameComponent implements OnInit {
     this.questionService.selectedType$.subscribe({
       next: (res) => {
         this.type = res;
-        console.log(res);
       },
 
       error: (err) => {
@@ -36,7 +35,7 @@ export class GameComponent implements OnInit {
 
     if(this.type === 'random' || this.type === '') {
       this.questionService.getRandomQuestions().subscribe(res => {this.questions = res; this.answers.setTotal(res.length);});
-    } 
+    }
       else this.questionService.getQuestions().subscribe(res => {this.questions = res; this.answers.setTotal(res.length)});
     console.log(this.questions);
   }
@@ -46,7 +45,7 @@ export class GameComponent implements OnInit {
       if(this.type === 'random' && value.ans === this.questions[this.curr].correct_answer) this.answers.incrementCorrect();
       else if(this.type === 'defined' && value.ans === this.questions[this.curr].correct) this.answers.incrementCorrect();
       this.curr = value.count;
-    } 
+    }
   }
 
   tryAgain() {

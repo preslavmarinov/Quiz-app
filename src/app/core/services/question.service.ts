@@ -22,6 +22,22 @@ export class QuestionService {
     return this.http.get<Question[]>(this.baseUrl);
   }
 
+  getQuestionById(id:number) : Observable<Question> {
+    return this.http.get<Question>(`${this.baseUrl}/${id}`);
+  }
+
+  createQuestion(question: Question) : Observable<Question> {
+    return this.http.post<Question>(this.baseUrl, question);
+  }
+
+  editQuestion(id:number, question:Question) : Observable<Question> {
+    return this.http.put<Question>(`${this.baseUrl}/${id}`, question);
+  }
+
+  deleteQuestion(id:number) :Observable<{}> {
+    return this.http.delete<{}>(`${this.baseUrl}/${id}`);
+  }
+
   getRandomQuestions(): Observable<any[]> {
     return this.http.get<any[]>(this.randomUrl).pipe(map((data:any) => data.results));
   }

@@ -15,10 +15,14 @@ export class DashboardComponent implements OnInit,OnDestroy{
   ngOnInit() {
     this.modalService.addModal('create-user-modal');
     this.modalService.addModal('edit-user-modal');
+    this.modalService.addModal('create-question-modal');
+    //this.modalService.addModal('edit-question-modal');
   }
   ngOnDestroy() {
     this.modalService.removeModal('create-user-modal');
     this.modalService.removeModal('edit-user-modal');
+    this.modalService.removeModal('create-question-modal');
+    //this.modalService.removeModal('edit-question-modal');
   }
 
   toggleSideBar(value: boolean) {

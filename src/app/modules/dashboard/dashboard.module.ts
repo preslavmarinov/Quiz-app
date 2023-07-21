@@ -18,6 +18,10 @@ import {MatButtonModule} from "@angular/material/button";
 import { CreateUserModalComponent } from './components/create-user-modal/create-user-modal.component';
 import { EditUserModalComponent } from './components/edit-user-modal/edit-user-modal.component';
 import {MatSelectModule} from "@angular/material/select";
+import {MatCardModule} from "@angular/material/card";
+import {MatDividerModule} from "@angular/material/divider";
+import { CreateQuestionModalComponent } from './components/create-question-modal/create-question-modal.component';
+import { EditQuestionModalComponent } from './components/edit-question-modal/edit-question-modal.component';
 
 
 @NgModule({
@@ -29,7 +33,9 @@ import {MatSelectModule} from "@angular/material/select";
     HeaderComponent,
     SideBarComponent,
     CreateUserModalComponent,
-    EditUserModalComponent
+    EditUserModalComponent,
+    CreateQuestionModalComponent,
+    EditQuestionModalComponent
   ],
   imports: [
     SharedModule,
@@ -41,7 +47,9 @@ import {MatSelectModule} from "@angular/material/select";
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule,
+    MatDividerModule
   ]
 })
 export class DashboardModule { }

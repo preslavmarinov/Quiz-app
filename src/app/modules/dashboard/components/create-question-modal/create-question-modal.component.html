@@ -1,0 +1,44 @@
+
+<div class="modal" (click)="close()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h1>Create new question</h1>
+    <button class="close-modal" mat-icon-button (click)="close()"><mat-icon>close</mat-icon></button>
+    <hr>
+
+    <div class="modal-form">
+      <form [formGroup]="form">
+        <mat-form-field class="mat-form-field">
+          <mat-label>Question</mat-label>
+          <input matInput formControlName="question" required>
+          <mat-icon matPrefix>question_mark</mat-icon>
+          <mat-error *ngIf="questionFormControl.invalid && questionFormControl.touched">Question field is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="mat-form-field">
+          <mat-label>Options</mat-label>
+          <input matInput formControlName="options" required>
+          <mat-icon matPrefix>list</mat-icon>
+          <mat-error *ngIf="optionsFormControl.invalid && optionsFormControl.touched">Options field is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="mat-form-field">
+          <mat-label>Correct Answer</mat-label>
+          <input matInput formControlName="correct" required>
+          <mat-icon matPrefix>check</mat-icon>
+          <mat-error *ngIf="correctFormControl.invalid && correctFormControl.touched">Correct Answer is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="mat-form-field">
+          <mat-label>Explanation</mat-label>
+          <input matInput formControlName="explanation">
+          <mat-icon matPrefix>info</mat-icon>
+          <mat-error *ngIf="explanationFormControl.touched && explanationFormControl.invalid">Explanation field is required</mat-error>
+        </mat-form-field>
+
+        <div class="create-btn-container">
+          <button mat-raised-button color="primary" (click)="createQuestion()">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

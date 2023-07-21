@@ -1,1 +1,26 @@
-<p>questions works!</p>
+<div class="new-question-container">
+  <button mat-raised-button color="primary" (click)="openModal('create-question-modal')">New Question</button>
+</div>
+
+<div class="cards-container">
+  <mat-card *ngFor="let question of questions" class="mat-card">
+
+    <mat-card-header>
+      <mat-card-title>{{question.question}}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <h4>Answer: '{{question.correct}}'</h4>
+      <p>{{question.explanation}}</p>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-actions>
+      <button mat-icon-button><mat-icon>visibility</mat-icon></button>
+      <button mat-icon-button (click)="openModal('edit-question-modal', question.id)"><mat-icon>edit</mat-icon></button>
+      <button mat-icon-button (click)="deleteQuestion(question.id!)"><mat-icon>delete</mat-icon></button>
+    </mat-card-actions>
+
+  </mat-card>
+</div>

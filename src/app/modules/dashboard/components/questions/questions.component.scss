@@ -1,0 +1,43 @@
+.new-question-container {
+  width: 90%;
+  margin: 1rem auto;
+
+  button:hover {
+    color:black;
+    background-color: #E91E63;
+  }
+}
+
+.cards-container {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 2rem auto;
+
+  .mat-card {
+    flex-basis: 30%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+
+    mat-card-header {
+      background-color: #E91E63;
+      padding: 10px;
+    }
+
+    mat-card-content {
+      margin-top: auto;
+    }
+
+    mat-card-actions {
+      margin-top: auto;
+
+      button:hover {
+        color: #E91E63;
+      }
+    }
+  }
+}
+
+
+

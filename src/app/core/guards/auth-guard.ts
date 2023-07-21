@@ -1,21 +1,32 @@
-import { Inject } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from "@angular/router";
-
+import { CanActivateFn, Router} from "@angular/router";
+import {inject} from "@angular/core";
 
 
 export const authGuardQuiz = () : CanActivateFn => {
-    console.log("vleze izvun");
-    return () => {
-        console.log("vleze vutre");
-        const router: Router = Inject(Router);
-        const userId: string | null = sessionStorage.getItem('id');
+  return () => {
+    const router:Router = inject(Router);
+    const userId: string | null = sessionStorage.getItem('id');
 
-        console.log(userId)
-        console.log(router);
-        console.log(router.url);
+    if(userId !== null) return true;
 
-        if(userId !== null) return true;
+    return router.navigateByUrl('/authentication/login');
+  }
+}
 
-        return router.navigateByUrl('/authentication/login');
+export const authGuardDashboard = (): CanActivateFn => {
+  return () => {
+    const router:Router = inject(Router);
+    const role: string | null = sessionStorage.getItem('role');
+    const userId: string | null = sessionStorage.getItem('id');
+
+    if(role === 'admin' && userId !== null) {
+      return true;
     }
+    else if(role === 'user') {
+      return router.navigateByUrl('/quiz');
+    }
+
+    return router.navigateByUrl('/authentication/login');
+
+  }
 }
