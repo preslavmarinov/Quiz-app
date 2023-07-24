@@ -1,13 +1,13 @@
 
-<div class="wrapper mat-app-background">
-    <app-header (sidebar)="toggleSideBar($event)"></app-header>
+<div class="wrapper mat-app-background" (click)="toggleSideBar(false)">
+    <app-header (sidebar)="toggleSideBar($event)" (click)="$event.stopPropagation()"></app-header>
 
-    <app-side-bar *ngIf="isSideBarOpen" (closeSideBar)="toggleSideBar($event)"></app-side-bar>
+    <app-side-bar *ngIf="isSideBarOpen" (closeSideBar)="toggleSideBar($event)" (click)="$event.stopPropagation()"></app-side-bar>
 
     <app-create-user-modal *ngIf="modalService.getModalState('create-user-modal') | async"></app-create-user-modal>
     <app-edit-user-modal *ngIf="modalService.getModalState('edit-user-modal') | async"></app-edit-user-modal>
     <app-create-question-modal *ngIf="modalService.getModalState('create-question-modal') | async"></app-create-question-modal>
-<!--    <app-edit-question-modal *ngIf="modalService.getModalState('edit-question-modal')"></app-edit-question-modal>-->
+    <app-edit-question-modal *ngIf="modalService.getModalState('edit-question-modal') | async"></app-edit-question-modal>
 
     <router-outlet></router-outlet>
 </div>

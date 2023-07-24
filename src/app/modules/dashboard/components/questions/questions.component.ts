@@ -36,15 +36,17 @@ export class QuestionsComponent implements OnInit{
   }
 
   deleteQuestion(id:number) {
-    this.questionService.deleteQuestion(id).subscribe({
-      next: () => {
-        this.notifier.notify('success', 'Successfully deleted question');
-        this.getQuestions();
-      },
-      error: (err) => {
-        this.notifier.notify('error', 'An error occurred');
-      }
-    })
+    if(confirm("Are you sure you want to delete this question?")) {
+      this.questionService.deleteQuestion(id).subscribe({
+        next: () => {
+          this.notifier.notify('success', 'Successfully deleted question');
+          this.getQuestions();
+        },
+        error: (err) => {
+          this.notifier.notify('error', 'An error occurred');
+        }
+      });
+    }
   }
 
   openModal(id:string, currElId:number = -1) {

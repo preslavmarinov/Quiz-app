@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {QuestionService} from "../../../../core/services/question.service";
 import {NotifierService} from "angular-notifier";
@@ -13,6 +13,8 @@ import {Question} from "../../../../core/models/question";
 })
 export class CreateQuestionModalComponent implements OnInit{
   form:FormGroup;
+  enteredOptions: string[] = [];
+  @ViewChild('options') optionsList: ElementRef;
 
   constructor(
     private questionService:QuestionService,
@@ -44,12 +46,12 @@ export class CreateQuestionModalComponent implements OnInit{
         updateOn: 'change'
       }],
       options: ['', {
-        validators: [Validators.required],
+        validators: [],
         updateOn: 'change'
       }],
       correct: ['', {
         validators: [Validators.required],
-        updateOn: 'change'
+        updateOn: 'submit'
       }],
       explanation: ['', {
         validators: [Validators.required],
@@ -64,12 +66,19 @@ export class CreateQuestionModalComponent implements OnInit{
 
   createQuestion() {
     if(this.form.invalid) {
+      console.log(this.form);
       this.notifier.notify('warning', 'Invalid form fields');
+      return;
+    }
+
+    if(this.enteredOptions.length < 2) {
+      this.notifier.notify('warning', 'Enter between 2 and 4 options');
+      return;
     }
 
     const newQuestion: Question = {
       question: this.questionFormControl.value,
-      options: this.optionsFormControl.value,
+      options: this.enteredOptions,
       correct: this.correctFormControl.value,
       explanation: this.explanationFormControl.value
     };
@@ -85,6 +94,20 @@ export class CreateQuestionModalComponent implements OnInit{
         this.notifier.notify('error', "An error occurred");
       }
     });
+  }
+
+  addOption() {
+    if(this.optionsFormControl.value !== '') {
+      this.enteredOptions.push(this.optionsFormControl.value);
+      this.optionsFormControl.setValue('');
+    }
+  }
+
+  removeOption(index:number) {
+    if(this.enteredOptions[index] === this.correctFormControl.value) {
+      this.correctFormControl.setValue('');
+    }
+    this.enteredOptions.splice(index, 1);
   }
 
 

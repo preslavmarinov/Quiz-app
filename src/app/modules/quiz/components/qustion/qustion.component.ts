@@ -14,7 +14,6 @@ export class QustionComponent implements OnChanges {
   randomOptions:string[];
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.question);
     if(this.type === 'random' || this.type === '') {
       this.randomOptions = this.shuffleArray(
         [this.question.correct_answer,
@@ -27,7 +26,6 @@ export class QustionComponent implements OnChanges {
 
 
   nextQuestion() : void {
-    console.log(this.chosenAnswer);
     this.next.emit({count: this.questionNumber+1, ans: this.chosenAnswer});
     this.chosenAnswer = '';
   }
@@ -39,14 +37,14 @@ export class QustionComponent implements OnChanges {
   shuffleArray(array:string[]): string[] {
       const shuffledArray = [...array];
       let currentIndex = shuffledArray.length;
-    
+
       while (currentIndex !== 0) {
         const randomIndex = Math.floor(Math.random() * currentIndex);
-    
+
         currentIndex--;
         [shuffledArray[currentIndex], shuffledArray[randomIndex]] = [shuffledArray[randomIndex], shuffledArray[currentIndex]];
       }
-    
+
       return shuffledArray;
   }
 }

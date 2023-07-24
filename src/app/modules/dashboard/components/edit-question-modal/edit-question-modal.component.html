@@ -1,1 +1,56 @@
-<p>edit-question-modal works!</p>
+<div class="modal" (click)="close()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h1>Edit question</h1>
+    <button class="close-modal" mat-icon-button (click)="close()"><mat-icon>close</mat-icon></button>
+    <hr>
+
+    <div class="modal-form">
+      <form [formGroup]="form">
+        <mat-form-field class="mat-form-field">
+          <mat-label>Question</mat-label>
+          <input matInput formControlName="question" required>
+          <mat-icon matPrefix>question_mark</mat-icon>
+          <mat-error *ngIf="questionFormControl.invalid && questionFormControl.touched">Question field is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="mat-form-field">
+          <mat-label>Options</mat-label>
+          <input matInput formControlName="options" [readonly]="enteredOptions.length === 4">
+          <mat-icon matPrefix>list</mat-icon>
+          <button mat-icon-button matSuffix (click)=" $event.preventDefault(); addOption();"><mat-icon>add_circle</mat-icon></button>
+          <mat-hint>Press + icon when you have wrote your option</mat-hint>
+        </mat-form-field>
+
+        <mat-selection-list #options  [multiple]="false">
+          <mat-list-option
+              *ngFor="let opt of enteredOptions; let i=index;" [value]="opt"
+              color="primary"
+              (click)="correctFormControl.setValue(opt)"
+              [selected]="correctFormControl.value === opt"
+          >
+            <button class="remove-opt-btn" mat-icon-button (click)="$event.preventDefault(); removeOption(i);"><mat-icon>close</mat-icon></button>
+            {{i+1}}.{{opt}}
+          </mat-list-option>
+        </mat-selection-list>
+
+        <mat-form-field class="mat-form-field">
+          <mat-label>Correct Answer</mat-label>
+          <input matInput formControlName="correct" required readonly>
+          <mat-icon matPrefix>check</mat-icon>
+          <mat-error *ngIf="correctFormControl.invalid">Correct Answer is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="mat-form-field">
+          <mat-label>Explanation</mat-label>
+          <textarea matInput formControlName="explanation"></textarea>
+          <mat-icon matPrefix>info</mat-icon>
+          <mat-error *ngIf="explanationFormControl.touched && explanationFormControl.invalid">Explanation field is required</mat-error>
+        </mat-form-field>
+
+        <div class="create-btn-container">
+          <button mat-raised-button color="primary" (click)="createQuestion()">Edit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

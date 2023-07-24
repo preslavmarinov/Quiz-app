@@ -22,6 +22,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatDividerModule} from "@angular/material/divider";
 import { CreateQuestionModalComponent } from './components/create-question-modal/create-question-modal.component';
 import { EditQuestionModalComponent } from './components/edit-question-modal/edit-question-modal.component';
+import {MatListModule} from "@angular/material/list";
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { EditQuestionModalComponent } from './components/edit-question-modal/edi
     MatButtonModule,
     MatSelectModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatListModule
   ]
 })
 export class DashboardModule { }
