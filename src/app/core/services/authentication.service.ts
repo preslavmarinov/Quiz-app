@@ -3,9 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import {Observable, find, map} from 'rxjs';
 import { User } from '../models/user';
 
-@Injectable({
-  providedIn: 'root'
-})
+// @Injectable({
+//   providedIn: 'root'
+// })
+@Injectable()
 export class AuthenticationService {
 
   private baseUrl:string = 'http://localhost:3000/users';

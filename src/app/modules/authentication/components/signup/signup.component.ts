@@ -17,7 +17,11 @@ export class SignupComponent implements OnInit {
   form:FormGroup;
 
 
-  constructor(private authService:AuthenticationService,private router:Router,private notifier:NotifierService,private fb:FormBuilder) {}
+  constructor(
+    private authService:AuthenticationService,
+    private router:Router,
+    private notifier:NotifierService,
+    private fb:FormBuilder) {}
 
   get fnameFormControl() {
     return this.form.controls['fname'];

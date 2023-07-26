@@ -3,9 +3,10 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Question } from '../models/question';
 
-@Injectable({
-  providedIn: 'root'
-})
+// @Injectable({
+//   providedIn: 'root'
+// })
+@Injectable()
 export class QuestionService {
   private typeQuestions = new BehaviorSubject<string>('');
   selectedType$ = this.typeQuestions.asObservable();
